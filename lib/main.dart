@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
               create: (context) => HomeBloc(
                 getListVideoUseCase: sl(),
                 flutterMethodChannel: sl(),
-              ),
+              )..add(const GetListVideo()),
               child: const HomeScreen(),
             ),
       },
