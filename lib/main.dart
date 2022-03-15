@@ -26,11 +26,12 @@ class MyApp extends StatelessWidget {
       initialRoute: NamedRoutes.homeScreen,
       routes: {
         NamedRoutes.homeScreen: (context) => BlocProvider(
-          create: (context) => HomeBloc(
-            getVideoUseCase: sl(),
-          ),
-          child: const HomeScreen(),
-        ),
+              create: (context) => HomeBloc(
+                getListVideoUseCase: sl(),
+                flutterMethodChannel: sl(),
+              ),
+              child: const HomeScreen(),
+            ),
       },
     );
   }

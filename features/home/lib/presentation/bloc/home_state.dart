@@ -1,16 +1,16 @@
 import 'package:equatable/equatable.dart';
 import 'package:common/utils/state/view_data_state.dart';
-import 'package:video/domain/entities/youtube_video_entity.dart';
+import 'package:video/domain/entities/video_list_entity.dart';
 
 class HomeState extends Equatable {
-  final ViewData<YouTubeVideoEntity> statusYouTubeVideo;
+  final ViewData<VideosListEntity> statusYouTubeVideo;
 
   const HomeState({
     required this.statusYouTubeVideo,
   });
 
   HomeState copyWith({
-    ViewData<YouTubeVideoEntity>? statusYouTubeVideo,
+    ViewData<VideosListEntity>? statusYouTubeVideo,
   }) {
     return HomeState(
       statusYouTubeVideo: statusYouTubeVideo ?? this.statusYouTubeVideo,

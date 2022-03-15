@@ -12,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   void _getVideo(BuildContext context) {
-    context.read<HomeBloc>().add(const SearchVideo(query: 'ruangguru'));
+    context.read<HomeBloc>().add(const GetListVideo());
   }
 
   @override
@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return const Text('No Data');
             } else if (status.isHasData) {
               return Text(
-                  '${state.statusYouTubeVideo.data?.items.length ?? 0}');
+                  '${state.statusYouTubeVideo.data?.videos.length ?? 0}');
             } else {
               return const SizedBox();
             }
