@@ -1,6 +1,7 @@
 import 'package:core/network/dio_handler.dart';
 import 'package:dependencies/dio/dio.dart';
 import 'package:dependencies/get_it/get_it.dart';
+import 'package:core/method_channel/flutter_method_channel.dart';
 
 class RegisterCoreModule {
   RegisterCoreModule() {
@@ -12,5 +13,8 @@ class RegisterCoreModule {
     sl.registerLazySingleton<DioHandler>(() => DioHandler(
           apiBaseUrl: 'https://jsonplaceholder.typicode.com',
         ));
+    sl.registerLazySingleton<FlutterMethodChannel>(
+      () => FlutterMethodChannelImpl(),
+    );
   }
 }
