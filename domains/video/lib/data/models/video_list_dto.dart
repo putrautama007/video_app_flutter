@@ -1,10 +1,10 @@
 class VideosListDTO {
   VideosListDTO({
-    this.kind,
-    this.etag,
-    this.nextPageToken,
-    this.videos,
-    this.pageInfo,
+    required this.kind,
+    required this.etag,
+    required this.nextPageToken,
+    required this.videos,
+    required this.pageInfo,
   });
 
   String kind;
@@ -13,30 +13,30 @@ class VideosListDTO {
   List<VideoItem> videos;
   PageInfo pageInfo;
 
-  factory VideosListDTO.fromJson(Map<String, dynamic> json) => VideosList(
-    kind: json["kind"],
-    etag: json["etag"],
-    nextPageToken: json["nextPageToken"],
-    videos: List<VideoItem>.from(
-        json["items"].map((x) => VideoItem.fromJson(x))),
-    pageInfo: PageInfo.fromJson(json["pageInfo"]),
-  );
+  factory VideosListDTO.fromJson(Map<String, dynamic> json) => VideosListDTO(
+        kind: json["kind"],
+        etag: json["etag"],
+        nextPageToken: json["nextPageToken"],
+        videos: List<VideoItem>.from(
+            json["items"].map((x) => VideoItem.fromJson(x))),
+        pageInfo: PageInfo.fromJson(json["pageInfo"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "kind": kind,
-    "etag": etag,
-    "nextPageToken": nextPageToken,
-    "items": List<dynamic>.from(videos.map((x) => x.toJson())),
-    "pageInfo": pageInfo.toJson(),
-  };
+        "kind": kind,
+        "etag": etag,
+        "nextPageToken": nextPageToken,
+        "items": List<dynamic>.from(videos.map((x) => x.toJson())),
+        "pageInfo": pageInfo.toJson(),
+      };
 }
 
 class VideoItem {
   VideoItem({
-    this.kind,
-    this.etag,
-    this.id,
-    this.video,
+    required this.kind,
+    required this.etag,
+    required this.id,
+    required this.video,
   });
 
   String kind;
@@ -45,31 +45,31 @@ class VideoItem {
   Video video;
 
   factory VideoItem.fromJson(Map<String, dynamic> json) => VideoItem(
-    kind: json["kind"],
-    etag: json["etag"],
-    id: json["id"],
-    video: Video.fromJson(json["snippet"]),
-  );
+        kind: json["kind"],
+        etag: json["etag"],
+        id: json["id"],
+        video: Video.fromJson(json["snippet"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "kind": kind,
-    "etag": etag,
-    "id": id,
-    "snippet": video.toJson(),
-  };
+        "kind": kind,
+        "etag": etag,
+        "id": id,
+        "snippet": video.toJson(),
+      };
 }
 
 class Video {
   Video({
-    this.publishedAt,
-    this.channelId,
-    this.title,
-    this.description,
-    this.thumbnails,
-    this.channelTitle,
-    this.playlistId,
-    this.position,
-    this.resourceId,
+    required this.publishedAt,
+    required this.channelId,
+    required this.title,
+    required this.description,
+    required this.thumbnails,
+    required this.channelTitle,
+    required this.playlistId,
+    required this.position,
+    required this.resourceId,
   });
 
   DateTime publishedAt;
@@ -83,57 +83,57 @@ class Video {
   ResourceId resourceId;
 
   factory Video.fromJson(Map<String, dynamic> json) => Video(
-    publishedAt: DateTime.parse(json["publishedAt"]),
-    channelId: json["channelId"],
-    title: json["title"],
-    description: json["description"],
-    thumbnails: Thumbnails.fromJson(json["thumbnails"]),
-    channelTitle: json["channelTitle"],
-    playlistId: json["playlistId"],
-    position: json["position"],
-    resourceId: ResourceId.fromJson(json["resourceId"]),
-  );
+        publishedAt: DateTime.parse(json["publishedAt"]),
+        channelId: json["channelId"],
+        title: json["title"],
+        description: json["description"],
+        thumbnails: Thumbnails.fromJson(json["thumbnails"]),
+        channelTitle: json["channelTitle"],
+        playlistId: json["playlistId"],
+        position: json["position"],
+        resourceId: ResourceId.fromJson(json["resourceId"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "publishedAt": publishedAt.toIso8601String(),
-    "channelId": channelId,
-    "title": title,
-    "description": description,
-    "thumbnails": thumbnails.toJson(),
-    "channelTitle": channelTitle,
-    "playlistId": playlistId,
-    "position": position,
-    "resourceId": resourceId.toJson(),
-  };
+        "publishedAt": publishedAt.toIso8601String(),
+        "channelId": channelId,
+        "title": title,
+        "description": description,
+        "thumbnails": thumbnails.toJson(),
+        "channelTitle": channelTitle,
+        "playlistId": playlistId,
+        "position": position,
+        "resourceId": resourceId.toJson(),
+      };
 }
 
 class ResourceId {
   ResourceId({
-    this.kind,
-    this.videoId,
+    required this.kind,
+    required this.videoId,
   });
 
   String kind;
   String videoId;
 
   factory ResourceId.fromJson(Map<String, dynamic> json) => ResourceId(
-    kind: json["kind"],
-    videoId: json["videoId"],
-  );
+        kind: json["kind"],
+        videoId: json["videoId"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "kind": kind,
-    "videoId": videoId,
-  };
+        "kind": kind,
+        "videoId": videoId,
+      };
 }
 
 class Thumbnails {
   Thumbnails({
-    this.thumbnailsDefault,
-    this.medium,
-    this.high,
-    this.standard,
-    this.maxres,
+    required this.thumbnailsDefault,
+    required this.medium,
+    required this.high,
+    required this.standard,
+    required this.maxres,
   });
 
   Default thumbnailsDefault;
@@ -143,30 +143,27 @@ class Thumbnails {
   Default maxres;
 
   factory Thumbnails.fromJson(Map<String, dynamic> json) => Thumbnails(
-    thumbnailsDefault: Default.fromJson(json["default"]),
-    medium: Default.fromJson(json["medium"]),
-    high: Default.fromJson(json["high"]),
-    standard: null == json["standard"]
-        ? null
-        : Default.fromJson(json["standard"]),
-    maxres:
-    null == json["maxres"] ? null : Default.fromJson(json["maxres"]),
-  );
+        thumbnailsDefault: Default.fromJson(json["default"]),
+        medium: Default.fromJson(json["medium"]),
+        high: Default.fromJson(json["high"]),
+        standard: Default.fromJson(json["standard"]),
+        maxres: Default.fromJson(json["maxres"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "default": thumbnailsDefault.toJson(),
-    "medium": medium.toJson(),
-    "high": high.toJson(),
-    "standard": standard.toJson(),
-    "maxres": maxres.toJson(),
-  };
+        "default": thumbnailsDefault.toJson(),
+        "medium": medium.toJson(),
+        "high": high.toJson(),
+        "standard": standard.toJson(),
+        "maxres": maxres.toJson(),
+      };
 }
 
 class Default {
   Default({
-    this.url,
-    this.width,
-    this.height,
+    required this.url,
+    required this.width,
+    required this.height,
   });
 
   String url;
@@ -174,34 +171,34 @@ class Default {
   int height;
 
   factory Default.fromJson(Map<String, dynamic> json) => Default(
-    url: json["url"],
-    width: json["width"],
-    height: json["height"],
-  );
+        url: json["url"],
+        width: json["width"],
+        height: json["height"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "url": url,
-    "width": width,
-    "height": height,
-  };
+        "url": url,
+        "width": width,
+        "height": height,
+      };
 }
 
 class PageInfo {
   PageInfo({
-    this.totalResults,
-    this.resultsPerPage,
+    required this.totalResults,
+    required this.resultsPerPage,
   });
 
   int totalResults;
   int resultsPerPage;
 
   factory PageInfo.fromJson(Map<String, dynamic> json) => PageInfo(
-    totalResults: json["totalResults"],
-    resultsPerPage: json["resultsPerPage"],
-  );
+        totalResults: json["totalResults"],
+        resultsPerPage: json["resultsPerPage"],
+      );
 
   Map<String, dynamic> toJson() => {
-    "totalResults": totalResults,
-    "resultsPerPage": resultsPerPage,
-  };
+        "totalResults": totalResults,
+        "resultsPerPage": resultsPerPage,
+      };
 }
