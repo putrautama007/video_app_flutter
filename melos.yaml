@@ -1,8 +1,0 @@
-name: flutter_sample_video
-
-packages:
-  - domains/**
-  - features/**
-  - resources/**
-  - shared_libraries/**
-  - '*'
