@@ -36,8 +36,6 @@ Icon?
 .tags*
 
 build/
-.android/
-.ios/
 .flutter-plugins
 .flutter-plugins-dependencies
 
@@ -46,3 +44,7 @@ app.*.symbols
 
 # Obfuscation related
 app.*.map.json
+
+# New related
+*.lock
+*.iml

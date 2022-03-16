@@ -92,6 +92,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.15.0"
+  common:
+    dependency: "direct overridden"
+    description:
+      path: "../../shared_libraries/common"
+      relative: true
+    source: path
+    version: "0.0.1"
   conventional_commit:
     dependency: transitive
     description:
@@ -99,6 +106,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "0.4.2"
+  core:
+    dependency: "direct overridden"
+    description:
+      path: "../../shared_libraries/core"
+      relative: true
+    source: path
+    version: "0.0.1"
   crypto:
     dependency: transitive
     description:
@@ -417,6 +431,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1+1"
+  resources:
+    dependency: "direct overridden"
+    description:
+      path: "../../resources/resources"
+      relative: true
+    source: path
+    version: "0.0.1"
   rxdart:
     dependency: transitive
     description:

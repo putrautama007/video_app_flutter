@@ -1,0 +1,8 @@
+name: video_app_flutter
+
+packages:
+  - domains/**
+  - features/**
+  - resources/**
+  - shared_libraries/**
+  - '*'

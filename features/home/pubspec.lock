@@ -446,7 +446,7 @@ packages:
     source: hosted
     version: "3.0.1+1"
   resources:
-    dependency: transitive
+    dependency: "direct overridden"
     description:
       path: "../../resources/resources"
       relative: true
