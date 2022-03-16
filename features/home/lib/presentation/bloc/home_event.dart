@@ -8,10 +8,8 @@ abstract class HomeEvent extends Equatable {
 }
 
 class SearchVideo extends HomeEvent {
-  final String query;
-
-  const SearchVideo({required this.query});
+  const SearchVideo();
 
   @override
-  List<Object?> get props => [query];
+  List<Object?> get props => [];
 }

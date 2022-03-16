@@ -30,6 +30,7 @@ class MyApp extends StatelessWidget {
         NamedRoutes.homeScreen: (context) => BlocProvider(
               create: (context) => HomeBloc(
                 getVideoUseCase: sl(),
+                flutterMethodChannel: sl(),
               ),
               child: const HomeScreen(),
             ),

@@ -16,7 +16,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   void _getVideo(BuildContext context) {
-    context.read<HomeBloc>().add(const SearchVideo(query: 'ruangguru'));
+    context.read<HomeBloc>().add(const SearchVideo());
   }
 
   void _navigateToDetail({
