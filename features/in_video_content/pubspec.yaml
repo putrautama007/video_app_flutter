@@ -11,6 +11,11 @@ dependencies:
   flutter:
     sdk: flutter
 
+  dependencies:
+    path: ../../shared_libraries/dependencies
+  video:
+    path: ../../domains/video
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
