@@ -2,6 +2,7 @@ name: in_video_content
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: "none"
+homepage:
 
 environment:
   sdk: ">=2.16.0 <3.0.0"
@@ -11,10 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Shared libraries
+  common:
+    path: ../../shared_libraries/common
+  component:
+    path: ../../shared_libraries/component
   dependencies:
     path: ../../shared_libraries/dependencies
-  video:
-    path: ../../domains/video
 
 dev_dependencies:
   flutter_test:

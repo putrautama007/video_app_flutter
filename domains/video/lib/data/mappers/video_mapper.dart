@@ -1,63 +1,107 @@
-import 'package:video/data/models/video_list_dto.dart';
-import 'package:video/domain/entities/video_list_entity.dart';
+import 'package:video/data/models/youtube_video_dto.dart';
+import 'package:video/domain/entities/youtube_video_entity.dart';
 
 class VideoMapper {
   const VideoMapper();
 
-  VideosListEntity mapVideosListDTOtoEntity(VideosListDTO? dto) {
-    final videos = <VideoItemEntity>[];
-    for (VideoItemDTO i in dto?.videos ?? []) {
-      videos.add(mapVideoItemDTOtoEntity(i));
+  YouTubeVideoEntity mapYouTubeVideoDTOtoEntity(YouTubeVideoDTO? dto) {
+    final items = <ItemVideoEntity>[];
+    for (ItemVideoDTO i in dto?.items ?? []) {
+      items.add(mapItemVideoDTOtoEntity(i));
     }
-    return VideosListEntity(
-      pageInfo: mapPageInfoDTOtoEntity(dto?.pageInfo),
-      nextPageToken: dto?.nextPageToken ?? '',
-      etag: dto?.etag ?? '',
-      videos: videos,
+    return YouTubeVideoEntity(
       kind: dto?.kind ?? '',
+      etag: dto?.etag ?? '',
+      items: items,
     );
   }
 
-  VideoItemEntity mapVideoItemDTOtoEntity(VideoItemDTO? dto) => VideoItemEntity(
-        id: dto?.id ?? '',
-        kind: dto?.kind ?? '',
-        video: mapVideoDTOtoEntity(dto?.video),
-        etag: dto?.kind ?? '',
-      );
+  ItemVideoEntity mapItemVideoDTOtoEntity(ItemVideoDTO? dto) {
+    return ItemVideoEntity(
+      kind: dto?.kind ?? '',
+      etag: dto?.etag ?? '',
+      id: mapIdVideoDTOtoEntity(dto?.id),
+      snippet: mapSnippetVideoDTOtoEntity(dto?.snippet),
+    );
+  }
 
-  VideoEntity mapVideoDTOtoEntity(VideoDTO? dto) => VideoEntity(
-        thumbnails: mapThumbnailsDTOtoEntity(dto?.thumbnails),
-        playlistId: dto?.playlistId ?? '',
-        title: dto?.title ?? '',
-        publishedAt: dto?.publishedAt ?? DateTime.now(),
-        resourceId: mapResourceIdDTOtoEntity(dto?.resourceId),
-        description: dto?.description ?? '',
-        channelId: dto?.channelId ?? '',
-        channelTitle: dto?.channelTitle ?? '',
-        position: dto?.position ?? 0,
-      );
+  IdVideoEntity mapIdVideoDTOtoEntity(IdVideoDTO? dto) {
+    return IdVideoEntity(kind: dto?.kind ?? '', videoId: dto?.videoId ?? '');
+  }
 
-  ResourceIdEntity mapResourceIdDTOtoEntity(ResourceIdDTO? dto) =>
-      ResourceIdEntity(
-        kind: dto?.kind ?? "",
-        videoId: dto?.videoId ?? "",
-      );
+  SnippetVideoEntity mapSnippetVideoDTOtoEntity(SnippetVideoDTO? dto) {
+    return SnippetVideoEntity(
+      publishedAt: dto?.publishedAt ?? '',
+      channelId: dto?.channelId ?? '',
+      title: dto?.title ?? '',
+      description: dto?.description ?? '',
+      thumbnails: mapThumbnailsVideoDTOtoEntity(dto?.thumbnails),
+      channelTitle: dto?.channelTitle ?? '',
+      publishTime: dto?.publishTime ?? '',
+    );
+  }
 
-  ThumbnailsEntity mapThumbnailsDTOtoEntity(ThumbnailsDTO? dto) =>
-      ThumbnailsEntity(
-        medium: mapDefaultDTOtoEntity(dto?.medium),
-        thumbnailsDefault: mapDefaultDTOtoEntity(dto?.thumbnailsDefault),
-        high: mapDefaultDTOtoEntity(dto?.high),
-      );
+  ThumbnailsVideoEntity mapThumbnailsVideoDTOtoEntity(ThumbnailsVideoDTO? dto) {
+    return ThumbnailsVideoEntity(
+        medium: mapMediumVideoDTOtoEntity(dto?.medium));
+  }
 
-  DefaultEntity mapDefaultDTOtoEntity(DefaultDTO? dto) => DefaultEntity(
-        width: dto?.width ?? 0,
-        url: dto?.url ?? "",
-        height: dto?.height ?? 0,
-      );
+  MediumVideoEntity mapMediumVideoDTOtoEntity(MediumVideoDTO? dto) {
+    return MediumVideoEntity(
+      url: dto?.url ?? '',
+      width: dto?.width ?? 0,
+      height: dto?.height ?? 0,
+    );
+  }
 
-  PageInfoEntity mapPageInfoDTOtoEntity(PageInfoDTO? dto) => PageInfoEntity(
-        totalResults: dto?.totalResults ?? 0,
-        resultsPerPage: dto?.resultsPerPage ?? 0,
-      );
+  YouTubeVideoDTO mapYouTubeVideoEntityToDTO(YouTubeVideoEntity entity) {
+    final items = <ItemVideoDTO>[];
+    for (ItemVideoEntity i in entity.items) {
+      items.add(mapItemVideoEntityToDTO(i));
+    }
+
+    return YouTubeVideoDTO(
+      kind: entity.kind,
+      etag: entity.etag,
+      items: items,
+    );
+  }
+
+  ItemVideoDTO mapItemVideoEntityToDTO(ItemVideoEntity entity) {
+    return ItemVideoDTO(
+      kind: entity.kind,
+      etag: entity.etag,
+      id: mapIdVideoEntityToDTO(entity.id),
+      snippet: mapSnippetVideoEntityToDTO(entity.snippet),
+    );
+  }
+
+  IdVideoDTO mapIdVideoEntityToDTO(IdVideoEntity entity) {
+    return IdVideoDTO(kind: entity.kind, videoId: entity.videoId);
+  }
+
+  SnippetVideoDTO mapSnippetVideoEntityToDTO(SnippetVideoEntity entity) {
+    return SnippetVideoDTO(
+      publishedAt: entity.publishedAt,
+      channelId: entity.channelId,
+      title: entity.title,
+      description: entity.description,
+      thumbnails: mapThumbnailsVideoEntityToDTO(entity.thumbnails),
+      channelTitle: entity.channelTitle,
+      publishTime: entity.publishTime,
+    );
+  }
+
+  ThumbnailsVideoDTO mapThumbnailsVideoEntityToDTO(
+      ThumbnailsVideoEntity entity) {
+    return ThumbnailsVideoDTO(medium: mapMediumVideoEntityToDTO(entity.medium));
+  }
+
+  MediumVideoDTO mapMediumVideoEntityToDTO(MediumVideoEntity entity) {
+    return MediumVideoDTO(
+      url: entity.url,
+      width: entity.width,
+      height: entity.height,
+    );
+  }
 }

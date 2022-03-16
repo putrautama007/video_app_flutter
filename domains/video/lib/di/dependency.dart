@@ -3,7 +3,7 @@ import 'package:video/data/data_sources/video_remote_data_source.dart';
 import 'package:video/data/mappers/video_mapper.dart';
 import 'package:video/data/repositories/video_repository_impl.dart';
 import 'package:video/domain/repositories/video_repository.dart';
-import 'package:video/domain/usecases/get_list_video_usecase.dart';
+import 'package:video/domain/usecases/get_video_usecase.dart';
 
 class RegisterVideoModule {
   RegisterVideoModule() {
@@ -29,7 +29,7 @@ class RegisterVideoModule {
         ));
 
     /// use case
-    sl.registerLazySingleton<GetListVideoUseCase>(() => GetListVideoUseCase(
+    sl.registerLazySingleton<GetVideoUseCase>(() => GetVideoUseCase(
           repository: sl(),
         ));
   }
