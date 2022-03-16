@@ -1,8 +1,9 @@
 import 'package:common/utils/state/view_data_state.dart';
+import 'package:component/card/card_youtube.dart';
 import 'package:dependencies/bloc/bloc.dart';
-import 'package:dependencies/cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:home/presentation/bloc/bloc.dart';
+import 'package:in_video_content/presentation/in_video_content_screen.dart';
 import 'package:video/domain/entities/video_list_entity.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -26,30 +27,29 @@ class HomeScreen extends StatelessWidget {
               return const Text('No Data');
             } else if (status.isHasData) {
               return ListView.builder(
-                  itemCount: state.statusYouTubeVideo.data?.videos.length ?? 0,
-                  itemBuilder: (context, index) {
-                    VideoItemEntity videoItemEntity =
-                        state.statusYouTubeVideo.data!.videos[index];
-                    return InkWell(
-                      onTap: () {},
-                      child: Container(
-                        padding: const EdgeInsets.all(20.0),
-                        child: Row(
-                          children: [
-                            CachedNetworkImage(
-                                imageUrl: videoItemEntity
-                                    .video.thumbnails.thumbnailsDefault.url),
-                            const SizedBox(width: 20),
-                            Flexible(
-                              child: Text(
-                                videoItemEntity.video.title,
-                              ),
-                            ),
-                          ],
+                itemCount: state.statusYouTubeVideo.data?.videos.length ?? 0,
+                itemBuilder: (context, index) {
+                  VideoItemEntity videoItemEntity =
+                      state.statusYouTubeVideo.data!.videos[index];
+                  return CardYouTube(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return InVideoContentScreen(
+                              videoItemEntity: videoItemEntity,
+                            );
+                          },
                         ),
-                      ),
-                    );
-                  });
+                      );
+                    },
+                    youTubeTitle: videoItemEntity.video.title,
+                    youTubeImageUrl:
+                        videoItemEntity.video.thumbnails.thumbnailsDefault.url,
+                  );
+                },
+              );
             } else {
               return const SizedBox();
             }

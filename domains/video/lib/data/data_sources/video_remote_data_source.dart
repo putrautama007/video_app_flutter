@@ -1,6 +1,6 @@
 import 'package:dependencies/dio/dio.dart';
 import 'package:video/data/models/video_list_dto.dart';
-import 'package:common/utils/constant/api_constant.dart';
+import 'package:resources/constant/api_constant.dart';
 
 abstract class VideoRemoteDataSource {
   const VideoRemoteDataSource();

@@ -18,10 +18,16 @@ dependencies:
   # Shared libraries
   common:
     path: ../../shared_libraries/common
+  component:
+    path: ../../shared_libraries/component
   dependencies:
     path: ../../shared_libraries/dependencies
   core:
     path: ../../shared_libraries/core
+
+  #Feature
+  in_video_content:
+    path: ../in_video_content
 
 dev_dependencies:
   flutter_test:

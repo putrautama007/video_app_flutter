@@ -11,6 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # Resource
+  resources:
+    path: ../../resources/resources
+
   # Shared libraries
   dependencies:
     path: ../dependencies

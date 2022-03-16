@@ -15,7 +15,7 @@ class FlutterMethodChannelImpl implements FlutterMethodChannel {
       final String result = await methodChannel.invokeMethod(getPlaylistIdData);
       return result;
     } catch (_) {
-      return "";
+      return "UUbc1RY0McnikiEMD8Box5Ig";
     }
   }
 }
